@@ -64,7 +64,6 @@ function BarMenu(props) {
           "tonic water",
           "ginger ale",
           "lemon-lime soda",
-          "or club soda",
           "maraschino",
           "cola",
           "olive brine",
