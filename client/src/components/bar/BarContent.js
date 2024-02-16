@@ -18,11 +18,14 @@ function BarContent({ barData }) {
     <div>
       <div className="grid grid-cols-3 gap-4">
         {currentItems.map((imageName, index) => (
-          <div key={index} className="bg-gray-200 p-4 rounded-md text-center">
+          <div
+            key={index}
+            className="bg-gray-200 p-4 rounded-md flex flex-col items-center justify-center"
+          >
             <img
               src={`/images/bottles/${imageName}.png`}
               alt="Not available"
-              className="w-full h-auto mb-2"
+              className="w-24 h-32 mb-2"
             />
             <p>{imageName}</p>
           </div>
