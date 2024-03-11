@@ -30,21 +30,6 @@ function BarMenu(props) {
     }
   }, [menuOption]);
 
-  // const fetchDataFromServer = (endpointName) => {
-  //   fetch(endpointName)
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       props.sendBarData(data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("There was a problem with the fetch operation:", error);
-  //     });
-  // };
   return (
     <div className="bg-gray-100 rounded-lg p-4">
       <h1 className="text-lg font-semibold mb-2">Menu</h1>
