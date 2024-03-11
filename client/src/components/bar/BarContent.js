@@ -3,7 +3,7 @@ import PaginationButtons from "./PaginationButtons";
 function BarContent({ barData }) {
   const itemsPerPage = 9;
   const [currentPage, setCurrentPage] = useState(1);
-
+  //TODO: check this bug
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentItems = barData.slice(startIndex, endIndex);

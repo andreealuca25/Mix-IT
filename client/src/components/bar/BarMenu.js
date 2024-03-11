@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
-
+import {
+  otherBeverages,
+  nonAlcoholicBeverages,
+  alcoholicBeverages,
+} from "../../utils/beverages";
 function BarMenu(props) {
   const barMenuItems = ["Alcoholic", "Non Alcoholic", "Other"];
   const [menuOption, setMenuOption] = useState("Alcoholic");
@@ -12,75 +16,13 @@ function BarMenu(props) {
   useEffect(() => {
     switch (menuOption) {
       case "Alcoholic":
-        props.sendBarData([
-          "bourbon",
-          "gin",
-          "Southern Comfort",
-          "rye whiskey",
-          "amaretto",
-          "vodka",
-          "rum",
-          "Irish Whiskey",
-          "scotch",
-          "cognac",
-          "tequila",
-          "calvados",
-          "citrus rum",
-          "apple vodka",
-          "applejack",
-          "citrus vodka",
-          "Van Gogh Wild Appel Vodka",
-          "spiced rum",
-          "raspberry vodka",
-          "galliano",
-          "white crème de cacao",
-          "peach vodka",
-          "Irish whiskey",
-          "Jack Daniel's",
-          "OP vodka",
-          "currant vodka",
-          "light rum",
-          "Pimm's No. 1",
-          "crème de noyau",
-          "Seagram's Seven-Crown whiskey",
-          "sloe gin",
-          "orange vodka",
-        ]);
+        props.sendBarData(alcoholicBeverages);
         break;
       case "Non Alcoholic":
-        props.sendBarData([
-          "lime juice",
-          "orange juice",
-          "cranberry juice",
-          "grapefruit juice",
-          "Juice",
-          "lemon juice",
-          "pineapple juice",
-        ]);
+        props.sendBarData(nonAlcoholicBeverages);
         break;
       case "Other":
-        props.sendBarData([
-          "egg white",
-          "tonic water",
-          "ginger ale",
-          "lemon-lime soda",
-          "maraschino",
-          "cola",
-          "olive brine",
-          "orange bitters",
-          "ginger beer",
-          "7UP",
-          "bottled water",
-          "Angostura",
-          "champagne",
-          "Peychaud's",
-          "sweet iced tea",
-          "cream",
-          "Coca-cola",
-          "simple syrup",
-          "grenadine",
-          "club soda",
-        ]);
+        props.sendBarData(otherBeverages);
         break;
       default:
         console.log("Default");

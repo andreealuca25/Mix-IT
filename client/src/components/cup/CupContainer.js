@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { cupTypes } from "../../utils/cups";
 
 function CupContainer() {
+  console.log("cup types, " + cupTypes);
+
   return (
-    <h1>CupContainer</h1>
+    <div>
+      <h1>CupContainer</h1>
+    </div>
   );
 }
 

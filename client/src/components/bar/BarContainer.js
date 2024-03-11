@@ -17,7 +17,6 @@ function BarContainer() {
     }
   }, [searchText, barData]);
 
-  console.log(barData);
   const filteredBarData = barData.filter((item) =>
     item.toLowerCase().includes(searchText.toLowerCase())
   );
