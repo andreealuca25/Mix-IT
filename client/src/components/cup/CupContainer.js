@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { cupTypes } from "../../utils/cups";
+import Cups from "./Cups";
+import CupActionButton from "./CupActionButton";
 
 function CupContainer() {
-  console.log("cup types, " + cupTypes);
-
+  const [cupData, setCupData] = useState([]);
   return (
     <div>
-      <h1>CupContainer</h1>
+      <Cups cups={cupTypes}></Cups>
+      <CupActionButton actionType="save" cupData={cupData} />
+      <CupActionButton actionType="delete" cupData={cupData} />
     </div>
   );
 }
