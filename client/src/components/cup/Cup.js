@@ -4,7 +4,7 @@ function Cup({ cupData }) {
   return (
     <div>
       <img
-        src={`/images/bottles/${cupData.imgSrc}.png`}
+        src={`/images/cups/${cupData.imgSrc}`}
         alt="Not available"
         className="w-24 h-32 mb-2"
       />
