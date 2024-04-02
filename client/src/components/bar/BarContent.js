@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PaginationButtons from "./PaginationButtons";
 import PourButton from "./PourButton";
 
-function BarContent({ barData }) {
+function BarContent({ barData, onPour }) {
   const itemsPerPage = 9;
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedItem, setSelectedItem] = useState(null); // State to store selected item
@@ -21,6 +21,9 @@ function BarContent({ barData }) {
     setSelectedItem(imageName === selectedItem ? null : imageName); // Toggle selection
   };
 
+  const handlePourDrink = (selectedDrink) => {
+    onPour(selectedDrink);
+  };
   return (
     <div>
       <div className="grid grid-cols-3 gap-4">
@@ -42,7 +45,7 @@ function BarContent({ barData }) {
         ))}
       </div>
       <div style={{ marginTop: "20px" }}>
-        <PourButton selectedItem={selectedItem} />
+        <PourButton selectedItem={selectedItem} onPour={handlePourDrink} />
       </div>
       <PaginationButtons
         currentPage={currentPage}

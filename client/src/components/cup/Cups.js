@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CupNavigationButton from "./CupNavigationButton";
 import Cup from "./Cup";
 
-const Cups = ({ cups }) => {
+const Cups = ({ cups, selectedDrink }) => {
   const [currentCupIndex, setCurrentCupIndex] = useState(0);
 
   return (
@@ -15,7 +15,7 @@ const Cups = ({ cups }) => {
           totalCups={cups.length}
         />
         <div className="mx-2">
-          <Cup cupData={cups[currentCupIndex]} />
+          <Cup cupData={cups[currentCupIndex]} selectedDrink={selectedDrink} />
         </div>
         <CupNavigationButton
           buttonType="Right"

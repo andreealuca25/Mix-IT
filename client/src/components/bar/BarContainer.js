@@ -3,7 +3,7 @@ import BarMenu from "./BarMenu";
 import BarSearchbar from "./BarSearchbar";
 import BarContent from "./BarContent";
 
-function BarContainer() {
+function BarContainer({ onPour }) {
   const [barData, setBarData] = useState([]);
   const [searchText, setSearchText] = useState("");
 
@@ -21,6 +21,10 @@ function BarContainer() {
     item.toLowerCase().includes(searchText.toLowerCase())
   );
 
+  const handlePourDrink = (selectedDrink) => {
+    onPour(selectedDrink);
+  };
+
   return (
     <div className="flex flex-col h-full bg-gray-100 rounded-lg shadow-lg">
       <div className="p-6 border-b border-gray-300">
@@ -37,7 +41,7 @@ function BarContainer() {
           }}
         />
 
-        <BarContent barData={filteredBarData} />
+        <BarContent barData={filteredBarData} onPour={handlePourDrink} />
       </div>
     </div>
   );
