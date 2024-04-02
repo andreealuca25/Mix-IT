@@ -4,8 +4,7 @@ import BarSearchbar from "./BarSearchbar";
 import BarContent from "./BarContent";
 import PourButton from "./PourButton";
 
-function BarContainer({ onPour }) {
-  const [selectedItem, setSelectedItem] = useState(null);
+function BarContainer({ setSelectedDrink,selectedDrink }) {
 
   const [barData, setBarData] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -44,9 +43,10 @@ function BarContainer({ onPour }) {
                 }}
             />
 
-            <BarContent barData={filteredBarData} onPour={handlePourDrink}/>
+            <BarContent barData={filteredBarData} selectedDrink={selectedDrink} setSelectedDrink={setSelectedDrink}/>
         </div>
-        <PourButton selectedItem={selectedItem} onPour={handlePourDrink}/>
+        <PourButton selectedDrink={selectedDrink} setSelectedDrink={setSelectedDrink}/>
+
     </div>
   );
 }

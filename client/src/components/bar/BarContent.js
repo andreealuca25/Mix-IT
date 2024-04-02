@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PaginationButtons from "./PaginationButtons";
 
-function BarContent({ barData, onPour }) {
+function BarContent({ barData, setSelectedDrink,selectedDrink }) {
   const itemsPerPage = 9;
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -20,9 +20,6 @@ function BarContent({ barData, onPour }) {
     setSelectedItem(imageName === selectedItem ? null : imageName); // Toggle selection
   };
 
-  const handlePourDrink = (selectedDrink) => {
-    onPour(selectedDrink);
-  };
   return (
     <div>
       <div className="grid grid-flow-col grid-rows-2 auto-cols-max gap-4">
@@ -30,7 +27,7 @@ function BarContent({ barData, onPour }) {
           <div
             key={index}
             className={` bg-gray-200 p-4 rounded-md flex flex-col items-center justify-center cursor-pointer ${
-              imageName === selectedItem ? "border-2 border-blue-500" : ""
+              imageName === selectedDrink ? "border-2 border-blue-500" : ""
             }`}
             onClick={() => handleImageClick(imageName)}
           >
