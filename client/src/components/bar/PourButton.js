@@ -10,7 +10,7 @@ function PourButton({ selectedItem, onPour }) {
   const handlePourButtonClick = () => {
     if (selectedItem) {
       console.log(`Pouring ${quantity}ml ${selectedItem}`);
-      onPour({ selectedItem: selectedItem, quantity: quantity });
+      onPour({ name: selectedItem, quantity: quantity });
     } else {
       console.log("No item selected");
     }
