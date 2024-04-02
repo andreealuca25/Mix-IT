@@ -1,11 +1,5 @@
 export const cupTypes = [
   {
-    name: "Whiskey Tumbler",
-    imgSrc: "whiskey-tumbler.svg",
-    fontFamily: "font-sans",
-    capacity: "90",
-  },
-  {
     name: "Wine Glass",
     imgSrc: "wine-glass.svg",
     fontFamily: "font-sans",
@@ -22,6 +16,12 @@ export const cupTypes = [
     imgSrc: "highball-glass.svg",
     fontFamily: "font-serif",
     capacity: "155",
+  },
+  {
+    name: "Whiskey Tumbler",
+    imgSrc: "whiskey-tumbler.svg",
+    fontFamily: "font-sans",
+    capacity: "90",
   },
   {
     name: "Champagne Flute",

@@ -3,6 +3,8 @@ const app = express();
 const port = 3000;
 const beverageRoute = require("./routes/BeverageRoute");
 
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
 app.use((req, res, next) => {
   //for testing purposes, allowing CORS
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");
