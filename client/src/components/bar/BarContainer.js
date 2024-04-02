@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import BarMenu from "./BarMenu";
 import BarSearchbar from "./BarSearchbar";
 import BarContent from "./BarContent";
+import PourButton from "./PourButton";
 
 function BarContainer({ onPour }) {
+  const [selectedItem, setSelectedItem] = useState(null);
+
   const [barData, setBarData] = useState([]);
   const [searchText, setSearchText] = useState("");
 
@@ -26,7 +29,7 @@ function BarContainer({ onPour }) {
   };
 
   return (
-    <div className="flex flex-col h-full bg-gray-100 rounded-lg shadow-lg">
+    <div className="flex flex-auto flex-col h-full bg-gray-100 rounded-lg shadow-lg">
       <div className="p-6 border-b border-gray-300">
         <BarSearchbar
           sendSearchText={(searchText) => {
@@ -34,15 +37,16 @@ function BarContainer({ onPour }) {
           }}
         />
       </div>
-      <div className="flex justify-between items-center p-6 border-b border-gray-300">
-        <BarMenu
-          sendBarData={(data) => {
-            setBarData(data);
-          }}
-        />
+        <div className="flex p-6 border-b border-gray-300">
+            <BarMenu
+                sendBarData={(data) => {
+                    setBarData(data);
+                }}
+            />
 
-        <BarContent barData={filteredBarData} onPour={handlePourDrink} />
-      </div>
+            <BarContent barData={filteredBarData} onPour={handlePourDrink}/>
+        </div>
+        <PourButton selectedItem={selectedItem} onPour={handlePourDrink}/>
     </div>
   );
 }

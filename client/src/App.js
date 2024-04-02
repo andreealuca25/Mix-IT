@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="flex flex-col h-screen">
       <Title />
-      <div className="mx-4 flex justify-between">
+      <div className="mx-4 flex ">
         <BarContainer onPour={handlePourDrink} />
         <CupContainer selectedDrink={selectedDrink} />
       </div>

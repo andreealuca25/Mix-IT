@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import PaginationButtons from "./PaginationButtons";
-import PourButton from "./PourButton";
 
 function BarContent({ barData, onPour }) {
   const itemsPerPage = 9;
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedItem, setSelectedItem] = useState(null); // State to store selected item
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -26,11 +25,11 @@ function BarContent({ barData, onPour }) {
   };
   return (
     <div>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-flow-col grid-rows-2 auto-cols-max gap-4">
         {currentItems.map((imageName, index) => (
           <div
             key={index}
-            className={`bg-gray-200 p-4 rounded-md flex flex-col items-center justify-center cursor-pointer ${
+            className={` bg-gray-200 p-4 rounded-md flex flex-col items-center justify-center cursor-pointer ${
               imageName === selectedItem ? "border-2 border-blue-500" : ""
             }`}
             onClick={() => handleImageClick(imageName)}
@@ -44,9 +43,7 @@ function BarContent({ barData, onPour }) {
           </div>
         ))}
       </div>
-      <div style={{ marginTop: "20px" }}>
-        <PourButton selectedItem={selectedItem} onPour={handlePourDrink} />
-      </div>
+
       <PaginationButtons
         currentPage={currentPage}
         totalPages={totalPages}
