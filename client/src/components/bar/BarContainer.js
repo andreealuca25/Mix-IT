@@ -4,7 +4,7 @@ import BarSearchbar from "./BarSearchbar";
 import BarContent from "./BarContent";
 import PourButton from "./PourButton";
 
-function BarContainer({ setSelectedDrink,selectedDrink }) {
+function BarContainer() {
 
   const [barData, setBarData] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -23,12 +23,9 @@ function BarContainer({ setSelectedDrink,selectedDrink }) {
     item.toLowerCase().includes(searchText.toLowerCase())
   );
 
-  const handlePourDrink = (selectedDrink) => {
-    onPour(selectedDrink);
-  };
 
   return (
-    <div className="flex flex-auto flex-col h-full bg-gray-100 rounded-lg shadow-lg">
+    <div className="flex flex-col h-full bg-gray-100 rounded-lg shadow-lg">
       <div className="p-6 border-b border-gray-300">
         <BarSearchbar
           sendSearchText={(searchText) => {
@@ -43,9 +40,9 @@ function BarContainer({ setSelectedDrink,selectedDrink }) {
                 }}
             />
 
-            <BarContent barData={filteredBarData} selectedDrink={selectedDrink} setSelectedDrink={setSelectedDrink}/>
+            <BarContent barData={filteredBarData}/>
         </div>
-        <PourButton selectedDrink={selectedDrink} setSelectedDrink={setSelectedDrink}/>
+        <PourButton/>
 
     </div>
   );
