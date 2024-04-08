@@ -10,7 +10,7 @@ function PaginationButtons({ currentPage, totalPages, onPageChange }) {
   };
 
   return (
-    <div className="mt-4 flex justify-center">
+    <div className="w-[400px] mx-auto mt-4 ">
       <button
         onClick={handlePrevPage}
         className="mx-2 px-4 py-2 rounded-md bg-blue-500 text-white"
