@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import PaginationButtons from "./PaginationButtons";
 import SelectedDrinkContext from "../../contexts/SelectedDrinkContext";
 
@@ -6,12 +6,14 @@ function BarContent({ barData }) {
 
 const {selectedDrink,setSelectedDrink} = useContext(SelectedDrinkContext)
 
-  const itemsPerPage = 9;
+  const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
-
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentItems = barData.slice(startIndex, endIndex);
+    useEffect(() => {
+        setCurrentPage(1)
+    }, [barData]);
+  let startIndex = (currentPage - 1) * itemsPerPage;
+  let endIndex = startIndex + itemsPerPage;
+  let currentItems = barData.slice(startIndex, endIndex);
 
   const totalPages = Math.ceil(barData.length / itemsPerPage);
 
