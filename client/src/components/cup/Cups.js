@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, {useContext, useState} from "react";
 import CupNavigationButton from "./CupNavigationButton";
 import Cup from "./Cup";
+import SelectedDrinkContext from "../../contexts/SelectedDrinkContext";
 
-const Cups = ({ cups, selectedDrink }) => {
+const Cups = ({ cups }) => {
   const [currentCupIndex, setCurrentCupIndex] = useState(0);
+  const {selectedDrink,setSelectedDrink} = useContext(SelectedDrinkContext)
 
   return (
     <div className="flex flex-col items-center justify-center">
