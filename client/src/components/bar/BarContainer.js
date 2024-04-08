@@ -33,23 +33,23 @@ function BarContainer() {
     useEffect(() => {
         setFilteredBarData(barData[menuOption])
     },[menuOption])
-    console.log("RERENDER")
+
     return (
         <div className="flex flex-col h-full bg-gray-100 rounded-lg shadow-lg">
-            <div className="p-6 border-b border-gray-300">
+            <div className="flex justify-between items-center p-6 border-b border-gray-300">
                 <BarSearchbar
                     sendSearchText={(searchText) => {
                         setSearchText(searchText);
                     }}
                 />
+                <PourButton/>
+
             </div>
             <div className="flex p-6 border-b border-gray-300">
                 <BarMenu menuOption={menuOption} setMenuOption={setMenuOption}/>
 
                 <BarContent barData={filteredBarData}/>
             </div>
-            <PourButton/>
-
         </div>
     );
 }
