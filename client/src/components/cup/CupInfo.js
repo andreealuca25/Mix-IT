@@ -1,15 +1,14 @@
 import React from "react";
 
-const CupInfo = ({ cupData, currentCapacity }) => {
-  if (!cupData) {
+const CupInfo = ({ cupDetails, currentCapacity }) => {
+  if (!cupDetails) {
     return <p>No cup data available.</p>;
   }
 
-  const { name, fontFamily, capacity } = cupData;
+  const { fontFamily, capacity } = cupDetails;
 
   return (
-    <div className={`cup-info ${fontFamily}`}>
-      <h2>{name}</h2>
+    <div>
       <h2>Capacity: {currentCapacity}</h2>
     </div>
   );

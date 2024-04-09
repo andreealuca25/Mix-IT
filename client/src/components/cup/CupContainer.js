@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { cupTypes } from "../../utils/cups";
-import Cups from "./Cups";
+import { cupDetails } from "../../utils/cups";
+import Cup from "./Cup";
 import CupActionButton from "./CupActionButton";
 import PreviouslySavedContainer from "./previouslySaved/PreviouslySavedContainer";
 
@@ -11,7 +11,7 @@ function CupContainer({ selectedDrink }) {
       <PreviouslySavedContainer />
       <CupActionButton actionType="save" cupData={cupData} />
       <CupActionButton actionType="delete" cupData={cupData} />
-      <Cups cups={cupTypes} selectedDrink={selectedDrink}></Cups>
+      <Cup cupDetails={cupDetails} selectedDrink={selectedDrink}></Cup>
     </div>
   );
 }

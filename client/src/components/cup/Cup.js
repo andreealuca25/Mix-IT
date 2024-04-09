@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import CupInfo from "./CupInfo";
 import ContentCalculator from "./ContentCalculator";
 
-function Cup({ cupData, selectedDrink }) {
-  const [currentCapacity, setCurrentCapacity] = useState(cupData.capacity);
+function Cup({ cupDetails, selectedDrink }) {
+  const [currentCapacity, setCurrentCapacity] = useState(cupDetails.capacity);
   const [cupContent, setCupContent] = useState([]);
   const [calculationResult, setCalculationResult] = useState([]);
 
@@ -22,10 +22,10 @@ function Cup({ cupData, selectedDrink }) {
 
   useEffect(() => {
     /*reset the cup content and calculation result when the cup data changes*/
-    setCurrentCapacity(cupData.capacity);
+    setCurrentCapacity(cupDetails.capacity);
     setCupContent([]);
     setCalculationResult([]);
-  }, [cupData]);
+  }, [cupDetails]);
 
   const handleCalculationResult = (result) => {
     setCalculationResult(result);
@@ -34,11 +34,11 @@ function Cup({ cupData, selectedDrink }) {
   return (
     <div>
       <img
-        src={`/images/cups/${cupData.imgSrc}`}
+        src={`/images/cups/${cupDetails.imgSrc}`}
         alt="Not available"
         className="w-24 h-32 mb-2"
       />
-      <CupInfo cupData={cupData} currentCapacity={currentCapacity} />
+      <CupInfo cupDetails={cupDetails} currentCapacity={currentCapacity} />
       {calculationResult.length !== 0 ? (
         <div className="bg-gray-100 p-4 rounded-lg">
           <h2 className="text-lg font-bold mb-2">Calculation Result</h2>
