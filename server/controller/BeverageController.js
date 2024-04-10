@@ -90,7 +90,7 @@ const getAllLiqueurs = (req, res) => {
 };
 
 const calculateClosestDrinks = (req, res) => {
-  const { cupContent } = req.body;
+  const { ingredientsNames } = req.body;
   database.query("SELECT * FROM cocktails", (err, result) => {
     if (err) {
       console.error("Error executing query", err);
@@ -98,7 +98,7 @@ const calculateClosestDrinks = (req, res) => {
     } else {
       const cocktails = result.rows;
       //TODO: add proper error handling
-      const ingredientsList = cupContent;
+      const ingredientsList = ingredientsNames;
       console.log(ingredientsList);
       const topMatches = findClosestMatches(ingredientsList, cocktails);
       res.status(200).json(topMatches);
