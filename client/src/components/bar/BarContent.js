@@ -1,16 +1,15 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PaginationButtons from "./PaginationButtons";
-import SelectedDrinkContext from "../../contexts/SelectedDrinkContext";
+import DrinkContext from "../../contexts/DrinkContext";
 
 function BarContent({ barData }) {
-
-const {selectedDrink,setSelectedDrink} = useContext(SelectedDrinkContext)
+  const { selectedDrink, setSelectedDrink } = useContext(DrinkContext);
 
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
-    useEffect(() => {
-        setCurrentPage(1)
-    }, [barData]);
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [barData]);
   let startIndex = (currentPage - 1) * itemsPerPage;
   let endIndex = startIndex + itemsPerPage;
   let currentItems = barData.slice(startIndex, endIndex);
@@ -21,27 +20,32 @@ const {selectedDrink,setSelectedDrink} = useContext(SelectedDrinkContext)
     setCurrentPage(page);
   };
 
-  const handleImageClick = (imageName) => {
-      setSelectedDrink(imageName === selectedDrink?.name ? null : {name:imageName,quantity:50});
+  const handleImageClick = (drink) => {
+    setSelectedDrink(
+      drink.name === selectedDrink?.name
+        ? null
+        : { name: drink.name, color: drink.color, quantity: 50 }
+    );
   };
-
   return (
     <div>
       <div className="grid w-[54em] h-[26em] grid-rows-2 grid-cols-5 gird-rows-2 gap-4">
-        {currentItems.map((imageName, index) => (
+        {currentItems.map((currentItem, index) => (
           <div
             key={index}
             className={`bg-gray-200 rounded-md flex flex-col items-center justify-center cursor-pointer ${
-              imageName === selectedDrink?.name ? "border-2 border-blue-500" : ""
+              currentItem.name === selectedDrink?.name
+                ? "border-2 border-blue-500"
+                : ""
             }`}
-            onClick={() => handleImageClick(imageName)}
+            onClick={() => handleImageClick(currentItem)}
           >
             <img
-              src={`/images/bottles/${imageName}.png`}
+              src={`/images/bottles/${currentItem.name}.png`}
               alt="Not available"
               className="w-36 h-36"
             />
-            <p className={'text-center'}>{imageName}</p>
+            <p className={"text-center"}>{currentItem.name}</p>
           </div>
         ))}
       </div>

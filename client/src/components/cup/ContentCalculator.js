@@ -1,9 +1,10 @@
 import React from "react";
 
 function ContentCalculator(props) {
-  const { cupContent, onCompleteCalculation } = props;
-
+  const { cupContent, setCalculationResult } = props;
   const calculateDrink = async () => {
+    const ingredientsNames = cupContent.map((ingredient) => ingredient.name);
+
     try {
       const response = await fetch(
         "http://localhost:3000/beverage/calculateClosestDrinks",
@@ -12,14 +13,14 @@ function ContentCalculator(props) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ cupContent }),
+          body: JSON.stringify({ ingredientsNames }),
         }
       );
       if (!response.ok) {
         throw new Error("Failed to fetch closest drinks");
       }
       const closestDrinksData = await response.json();
-      onCompleteCalculation(closestDrinksData);
+      setCalculationResult(closestDrinksData);
     } catch (error) {
       console.error("Error fetching closest drinks:", error.message);
     }

@@ -1,24 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CupInfo from "./CupInfo";
 import ContentCalculator from "./ContentCalculator";
+import DrinkContext from "../../contexts/DrinkContext";
 
 function Cup({ cupDetails, selectedDrink }) {
-  const [currentCapacity, setCurrentCapacity] = useState(cupDetails.capacity);
-  const [cupContent, setCupContent] = useState([]);
+  const { currentCapacity, setCurrentCapacity } = useContext(DrinkContext);
+  const { cupContent, setCupContent } = useContext(DrinkContext);
   const [calculationResult, setCalculationResult] = useState([]);
-
-  useEffect(() => {
-    if (selectedDrink != null) {
-      if (currentCapacity - selectedDrink.quantity >= 0) {
-        setCurrentCapacity(currentCapacity - selectedDrink.quantity);
-        if (!cupContent.includes(selectedDrink.name)) {
-          setCupContent([...cupContent, selectedDrink.name]);
-        }
-      } else {
-        alert("No space available");
-      }
-    }
-  }, [selectedDrink]);
 
   useEffect(() => {
     /*reset the cup content and calculation result when the cup data changes*/
@@ -26,10 +14,6 @@ function Cup({ cupDetails, selectedDrink }) {
     setCupContent([]);
     setCalculationResult([]);
   }, [cupDetails]);
-
-  const handleCalculationResult = (result) => {
-    setCalculationResult(result);
-  };
 
   return (
     <div>
@@ -62,7 +46,7 @@ function Cup({ cupDetails, selectedDrink }) {
       ) : (
         <ContentCalculator
           cupContent={cupContent}
-          onCompleteCalculation={handleCalculationResult}
+          setCalculationResult={setCalculationResult}
         />
       )}
     </div>
