@@ -2,11 +2,15 @@ import React, { useState, useEffect, useContext } from "react";
 import CupInfo from "./CupInfo";
 import ContentCalculator from "./ContentCalculator";
 import DrinkContext from "../../contexts/DrinkContext";
+import DrinkGlass from "./DrinkGlass";
+import { blendHexColors } from "../../utils/colorConverter";
 
 function Cup({ cupDetails }) {
   const { currentCapacity, setCurrentCapacity } = useContext(DrinkContext);
   const { cupContent, setCupContent } = useContext(DrinkContext);
   const [calculationResult, setCalculationResult] = useState([]);
+  const [fillColor, setFillColor] = useState("");
+  const [fillLevel, setFillLevel] = useState(0);
 
   useEffect(() => {
     /*reset the cup content and calculation result when the cup data changes*/
@@ -16,10 +20,13 @@ function Cup({ cupDetails }) {
   }, [cupDetails]);
 
   useEffect(() => {
-    if (cupContent.length !== 0) {
-      console.log("cupContent changed", cupContent);
+    if (cupContent.length == 1) {
+      setFillColor(cupContent[0].color);
+      setFillLevel(cupContent[0].quantity);
+    } else if (cupContent.length !== 0) {
       const lastDrinkAdded = cupContent[cupContent.length - 1];
-      console.log("lastDrinkAdded", lastDrinkAdded);
+      setFillColor(blendHexColors(fillColor, lastDrinkAdded.color));
+      setFillLevel(fillLevel + lastDrinkAdded.quantity);
     }
   }, [cupContent]);
   return (
@@ -50,11 +57,12 @@ function Cup({ cupDetails }) {
           setCalculationResult={setCalculationResult}
         />
       )}
-      <img
-        src={`/images/cups/${cupDetails.imgSrc}`}
-        alt="Not available"
-        className="w-24 h-32 mb-2"
+      <DrinkGlass
+        fillLevel={fillLevel}
+        fillColor={fillColor}
+        glassCapacity={500}
       />
+
       <CupInfo
         cupDetails={cupDetails}
         currentCapacity={currentCapacity}

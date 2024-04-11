@@ -13,9 +13,9 @@ const CupInfo = ({ cupDetails, currentCapacity, cupContent }) => {
       {cupContent.length !== 0 && (
         <div>
           <h2>So far you have poured: </h2>
-          {cupContent.map((ingredient) => {
+          {cupContent.map((ingredient, index) => {
             return (
-              <h2 className="bg-sky-500/50 my-4">
+              <h2 key={index} className="bg-sky-500/50 my-4">
                 {ingredient.name} : {ingredient.quantity} ml
               </h2>
             );
