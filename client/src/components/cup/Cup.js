@@ -3,7 +3,7 @@ import CupInfo from "./CupInfo";
 import ContentCalculator from "./ContentCalculator";
 import DrinkContext from "../../contexts/DrinkContext";
 
-function Cup({ cupDetails, selectedDrink }) {
+function Cup({ cupDetails }) {
   const { currentCapacity, setCurrentCapacity } = useContext(DrinkContext);
   const { cupContent, setCupContent } = useContext(DrinkContext);
   const [calculationResult, setCalculationResult] = useState([]);
@@ -15,14 +15,15 @@ function Cup({ cupDetails, selectedDrink }) {
     setCalculationResult([]);
   }, [cupDetails]);
 
+  useEffect(() => {
+    if (cupContent.length !== 0) {
+      console.log("cupContent changed", cupContent);
+      const lastDrinkAdded = cupContent[cupContent.length - 1];
+      console.log("lastDrinkAdded", lastDrinkAdded);
+    }
+  }, [cupContent]);
   return (
     <div>
-      <img
-        src={`/images/cups/${cupDetails.imgSrc}`}
-        alt="Not available"
-        className="w-24 h-32 mb-2"
-      />
-      <CupInfo cupDetails={cupDetails} currentCapacity={currentCapacity} />
       {calculationResult.length !== 0 ? (
         <div className="bg-gray-100 p-4 rounded-lg">
           <h2 className="text-lg font-bold mb-2">Calculation Result</h2>
@@ -49,6 +50,16 @@ function Cup({ cupDetails, selectedDrink }) {
           setCalculationResult={setCalculationResult}
         />
       )}
+      <img
+        src={`/images/cups/${cupDetails.imgSrc}`}
+        alt="Not available"
+        className="w-24 h-32 mb-2"
+      />
+      <CupInfo
+        cupDetails={cupDetails}
+        currentCapacity={currentCapacity}
+        cupContent={cupContent}
+      />
     </div>
   );
 }
