@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import BarMenu from "./BarMenu";
 import BarSearchbar from "./BarSearchbar";
 import BarContent from "./BarContent";
@@ -16,23 +16,11 @@ const barData = {
 }
 function BarContainer() {
     const [menuOption, setMenuOption] = useState('Alcoholic');
-    const [filteredBarData, setFilteredBarData] = useState(barData[menuOption]);
-
     const [searchText, setSearchText] = useState("");
-    useEffect(() => {
 
-        if (searchText === "") {
-            setFilteredBarData(barData[menuOption])
-        } else {
-            const filteredData = barData[menuOption].filter(item =>
-                item.toLowerCase().includes(searchText.toLowerCase())
-            );
-            setFilteredBarData(filteredData);
-        }
-    }, [searchText]);
-    useEffect(() => {
-        setFilteredBarData(barData[menuOption])
-    },[menuOption])
+    const filteredBarData = barData[menuOption].filter(item =>
+        item.name.toLowerCase().includes(searchText.toLowerCase())
+    );
 
     return (
         <div className="flex flex-col h-full bg-gray-100 rounded-lg shadow-lg">

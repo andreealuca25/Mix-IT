@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-function BarMenu({ menuOption, setMenuOption }) {
+function BarMenu({ menuOption,setMenuOption }) {
   const barMenuItems = ["Alcoholic", "Non Alcoholic", "Other"];
   return (
     <div className="bg-gray-100 w-48 rounded-lg p-4">
