@@ -11,10 +11,23 @@ function PourButton() {
     if (selectedDrink) {
       if (currentCapacity - quantity >= 0) {
         setCurrentCapacity(currentCapacity - quantity);
-        setCupContent([
-          ...cupContent,
-          { ...selectedDrink, quantity: quantity },
-        ]);
+        const existingDrinkIndex = cupContent.findIndex(
+          //check if the drink has already been poured
+          (item) => item.name === selectedDrink.name
+        );
+        if (existingDrinkIndex !== -1) {
+          const updatedCupContent = [...cupContent];
+          updatedCupContent[existingDrinkIndex] = {
+            ...updatedCupContent[existingDrinkIndex],
+            quantity: updatedCupContent[existingDrinkIndex].quantity + quantity,
+          };
+          setCupContent(updatedCupContent);
+        } else {
+          setCupContent([
+            ...cupContent,
+            { ...selectedDrink, quantity: quantity },
+          ]);
+        }
       } else {
         alert("No space available or not selected"); //TODO: add error handling
       }
