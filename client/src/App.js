@@ -1,4 +1,3 @@
-import React from "react";
 import Title from "./components/title/Title";
 import BarContainer from "./components/bar/BarContainer";
 import CupContainer from "./components/cup/CupContainer";

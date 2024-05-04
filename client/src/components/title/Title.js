@@ -1,5 +1,3 @@
-import React from "react";
-
 function Title() {
   return (
     <div className="flex items-center justify-center mb-4">

@@ -1,11 +1,11 @@
-import React, { createContext, useState } from "react";
+import { createContext, useState } from 'react'
 
-const DrinkContext = createContext();
+const DrinkContext = createContext()
 
 export const DrinkProvider = ({ children }) => {
-  const [selectedDrink, setSelectedDrink] = useState();
-  const [cupContent, setCupContent] = useState([]);
-  const [currentCapacity, setCurrentCapacity] = useState(0);
+  const [selectedDrink, setSelectedDrink] = useState()
+  const [cupContent, setCupContent] = useState([])
+  const [currentCapacity, setCurrentCapacity] = useState(0)
 
   const contextValue = {
     selectedDrink,
@@ -14,11 +14,11 @@ export const DrinkProvider = ({ children }) => {
     setCupContent,
     currentCapacity,
     setCurrentCapacity,
-  };
+  }
   return (
     <DrinkContext.Provider value={contextValue}>
       {children}
     </DrinkContext.Provider>
-  );
-};
-export default DrinkContext;
+  )
+}
+export default DrinkContext
