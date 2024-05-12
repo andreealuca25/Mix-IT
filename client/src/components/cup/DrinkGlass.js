@@ -7,7 +7,6 @@ const DrinkGlass = ({
   const glassHeight = 100;
   const fillHeight = (glassHeight * fillLevel) / glassCapacity;
 
-  console.log("fillcolor", fillColor);
   const styles = {
     glass: {
       width: "80px",

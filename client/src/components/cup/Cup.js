@@ -7,7 +7,7 @@ import { blendHexColors } from "../../utils/colorConverter";
 
 function Cup() {
   const { currentCapacity } = useContext(DrinkContext);
-  const { cupContent, setCupContent } = useContext(DrinkContext);
+  const { cupContent } = useContext(DrinkContext);
   const [calculationResult, setCalculationResult] = useState([]);
   const [fillColor, setFillColor] = useState("");
   const [fillLevel, setFillLevel] = useState(0);

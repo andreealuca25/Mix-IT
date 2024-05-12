@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-const DrinkContext = createContext();
+const DrinkContext = createContext({});
 
 export const DrinkProvider = ({ children }) => {
   const [selectedDrink, setSelectedDrink] = useState();

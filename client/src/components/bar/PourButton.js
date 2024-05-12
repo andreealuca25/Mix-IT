@@ -4,9 +4,13 @@ import DrinkContext from "../../contexts/DrinkContext";
 function PourButton() {
   const [quantity, setQuantity] = useState(50);
   const QUANTITY_VALUES = [50, 100, 150, 200, 250];
-  const { selectedDrink } = useContext(DrinkContext);
-  const { cupContent, setCupContent } = useContext(DrinkContext);
-  const { currentCapacity, setCurrentCapacity } = useContext(DrinkContext);
+  const {
+    selectedDrink,
+    cupContent,
+    setCupContent,
+    currentCapacity,
+    setCurrentCapacity,
+  } = useContext(DrinkContext);
   const handlePourButtonClick = () => {
     if (selectedDrink) {
       if (currentCapacity - quantity >= 0) {
