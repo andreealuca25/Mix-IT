@@ -1,5 +1,3 @@
-import React from "react";
-
 function BarSearchbar(props) {
   const handleSearchInput = (e) => {
     props.sendSearchText(e.target.value);

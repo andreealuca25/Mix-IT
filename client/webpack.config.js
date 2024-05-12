@@ -46,6 +46,8 @@ module.exports = {
     new ESLintPlugin({
       context: "src",
       failOnWarning: false,
+      emitWarning: true,
+      configType: "eslintrc",
     }),
   ],
   resolve: {

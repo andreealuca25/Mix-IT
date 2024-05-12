@@ -1,5 +1,3 @@
-import React from "react";
-
 const CupActionButton = ({ actionType, cupData }) => {
   const handleClick = () => {
     if (actionType === "save") {

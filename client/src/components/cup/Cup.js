@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import CupInfo from "./CupInfo";
 import ContentCalculator from "./ContentCalculator";
 import DrinkContext from "../../contexts/DrinkContext";

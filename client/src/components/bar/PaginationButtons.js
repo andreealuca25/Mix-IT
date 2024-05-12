@@ -1,5 +1,3 @@
-import React from "react";
-
 function PaginationButtons({ currentPage, totalPages, onPageChange }) {
   const handlePrevPage = () => {
     onPageChange(Math.max(currentPage - 1, 1));

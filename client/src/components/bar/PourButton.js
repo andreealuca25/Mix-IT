@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import DrinkContext from "../../contexts/DrinkContext";
 
 function PourButton() {
