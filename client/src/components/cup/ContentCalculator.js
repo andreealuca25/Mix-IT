@@ -1,28 +1,28 @@
 function ContentCalculator(props) {
-  const { cupContent, setCalculationResult } = props
+  const { cupContent, setCalculationResult } = props;
   const calculateDrink = async () => {
-    const ingredientsNames = cupContent.map((ingredient) => ingredient.name)
+    const ingredientsNames = cupContent.map((ingredient) => ingredient.name);
 
     try {
       const response = await fetch(
-        'http://localhost:3000/beverage/calculateClosestDrinks',
+        "http://localhost:3000/beverage/calculateClosestDrinks",
         {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({ ingredientsNames }),
-        },
-      )
+        }
+      );
       if (!response.ok) {
-        throw new Error('Failed to fetch closest drinks')
+        throw new Error("Failed to fetch closest drinks");
       }
-      const closestDrinksData = await response.json()
-      setCalculationResult(closestDrinksData)
+      const closestDrinksData = await response.json();
+      setCalculationResult(closestDrinksData);
     } catch (error) {
-      console.error('Error fetching closest drinks:', error.message)
+      console.error("Error fetching closest drinks:", error.message);
     }
-  }
+  };
 
   return (
     <button
@@ -31,7 +31,7 @@ function ContentCalculator(props) {
     >
       Calculate Drink
     </button>
-  )
+  );
 }
 
-export default ContentCalculator
+export default ContentCalculator;
