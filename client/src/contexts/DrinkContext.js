@@ -5,7 +5,7 @@ const DrinkContext = createContext();
 export const DrinkProvider = ({ children }) => {
   const [selectedDrink, setSelectedDrink] = useState();
   const [cupContent, setCupContent] = useState([]);
-  const [currentCapacity, setCurrentCapacity] = useState(0);
+  const [currentCapacity, setCurrentCapacity] = useState(500);
 
   const contextValue = {
     selectedDrink,

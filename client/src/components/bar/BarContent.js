@@ -1,24 +1,9 @@
-import { useContext, useEffect, useState } from "react";
-import PaginationButtons from "./PaginationButtons";
+import { useContext } from "react";
 import DrinkContext from "../../contexts/DrinkContext";
 
-const BarContent = ({ barData }) => {
+const BarContent = ({ currentItems }) => {
   const { selectedDrink, setSelectedDrink } = useContext(DrinkContext);
   console.log("Bar content rendered");
-  const itemsPerPage = 10;
-  const [currentPage, setCurrentPage] = useState(1);
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [barData]);
-  let startIndex = (currentPage - 1) * itemsPerPage;
-  let endIndex = startIndex + itemsPerPage;
-  let currentItems = barData.slice(startIndex, endIndex);
-
-  const totalPages = Math.ceil(barData.length / itemsPerPage);
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
 
   const handleImageClick = (drink) => {
     setSelectedDrink(
@@ -49,12 +34,6 @@ const BarContent = ({ barData }) => {
           </div>
         ))}
       </div>
-
-      <PaginationButtons
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
     </div>
   );
 };

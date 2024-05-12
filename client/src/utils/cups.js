@@ -60,8 +60,3 @@ export const cupTypes = [
     capacity: "535",
   },
 ];
-
-export const cupDetails = {
-  imgSrc: "simple-glass.svg",
-  capacity: "450",
-};

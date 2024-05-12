@@ -1,4 +1,10 @@
-const CupInfo = ({ cupDetails, currentCapacity, cupContent }) => {
+const CupInfo = ({ currentCapacity, cupContent }) => {
+  // TODO: make cupDetails dynamic
+  const cupDetails = {
+    imgSrc: "simple-glass.svg",
+    capacity: "450",
+  };
+
   if (!cupDetails) {
     return <p>No cup data available.</p>;
   }

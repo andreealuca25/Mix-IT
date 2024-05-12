@@ -8,7 +8,7 @@ function PaginationButtons({ currentPage, totalPages, onPageChange }) {
   };
 
   return (
-    <div className="w-[400px] mx-auto mt-4 ">
+    <div className="w-[400px] mx-auto mt-4 col-start-2">
       <button
         onClick={handlePrevPage}
         className="mx-2 px-4 py-2 rounded-md bg-blue-500 text-white"

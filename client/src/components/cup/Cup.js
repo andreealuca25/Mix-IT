@@ -5,22 +5,18 @@ import DrinkContext from "../../contexts/DrinkContext";
 import DrinkGlass from "./DrinkGlass";
 import { blendHexColors } from "../../utils/colorConverter";
 
-function Cup({ cupDetails }) {
-  const { currentCapacity, setCurrentCapacity } = useContext(DrinkContext);
+function Cup() {
+  const { currentCapacity } = useContext(DrinkContext);
   const { cupContent, setCupContent } = useContext(DrinkContext);
   const [calculationResult, setCalculationResult] = useState([]);
   const [fillColor, setFillColor] = useState("");
   const [fillLevel, setFillLevel] = useState(0);
 
-  useEffect(() => {
-    /*reset the cup content and calculation result when the cup data changes*/
-    setCurrentCapacity(cupDetails.capacity);
-    setCupContent([]);
-    setCalculationResult([]);
-  }, [cupDetails]);
+  console.log("CUPS");
+  console.log(cupContent);
 
   useEffect(() => {
-    if (cupContent.length == 1) {
+    if (cupContent.length === 1) {
       setFillColor(cupContent[0].color);
       setFillLevel(cupContent[0].quantity);
     } else if (cupContent.length !== 0) {
@@ -63,11 +59,7 @@ function Cup({ cupDetails }) {
         glassCapacity={500}
       />
 
-      <CupInfo
-        cupDetails={cupDetails}
-        currentCapacity={currentCapacity}
-        cupContent={cupContent}
-      />
+      <CupInfo currentCapacity={currentCapacity} cupContent={cupContent} />
     </div>
   );
 }
