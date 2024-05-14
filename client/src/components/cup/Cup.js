@@ -7,22 +7,19 @@ import { blendHexColors } from "../../utils/colorConverter";
 
 function Cup() {
   const { currentCapacity } = useContext(DrinkContext);
-  const { cupContent } = useContext(DrinkContext);
+  const { cupContent, selectedDrink } = useContext(DrinkContext);
   const [calculationResult, setCalculationResult] = useState([]);
   const [fillColor, setFillColor] = useState("");
   const [fillLevel, setFillLevel] = useState(0);
-
-  console.log("CUPS");
-  console.log(cupContent);
 
   useEffect(() => {
     if (cupContent.length === 1) {
       setFillColor(cupContent[0].color);
       setFillLevel(cupContent[0].quantity);
     } else if (cupContent.length !== 0) {
-      const lastDrinkAdded = cupContent[cupContent.length - 1];
-      setFillColor(blendHexColors(fillColor, lastDrinkAdded.color));
-      setFillLevel(fillLevel + lastDrinkAdded.quantity);
+      setFillColor(blendHexColors(fillColor, selectedDrink.color));
+      setFillLevel(fillLevel + selectedDrink.quantity);
+      console.log(fillLevel, selectedDrink.quantity);
     }
   }, [cupContent]);
   return (
