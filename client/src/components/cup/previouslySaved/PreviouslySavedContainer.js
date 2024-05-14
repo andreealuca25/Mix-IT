@@ -1,5 +1,12 @@
+import PreviouslySavedDrinks from "./PreviouslySavedDrinks";
+
 function PreviouslySavedContainer() {
-  return <h1>PreviouslySavedContainer</h1>;
+  return (
+    <div className="m-2">
+      <h1>Previously Saved Drinks</h1>
+      <PreviouslySavedDrinks />
+    </div>
+  );
 }
 
 export default PreviouslySavedContainer;
