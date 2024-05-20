@@ -1,12 +1,10 @@
 import Cup from "./Cup";
-import SaveDrinkButton from "./SaveDrinkButton";
-import PreviouslySavedContainer from "./previouslySaved/PreviouslySavedContainer";
+import SelectedBottles from "./SelectedBottles";
 
 function CupContainer() {
   return (
-    <div>
-      <PreviouslySavedContainer />
-      <SaveDrinkButton />
+    <div className={"flex justify-around"}>
+      <SelectedBottles />
       <Cup />
     </div>
   );

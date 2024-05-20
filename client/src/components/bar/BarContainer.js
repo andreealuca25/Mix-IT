@@ -40,8 +40,8 @@ function BarContainer() {
   }
   console.log("Test");
   return (
-    <div className="flex flex-col h-full bg-gray-100 rounded-lg shadow-lg">
-      <div className="flex justify-between items-center p-6 border-b border-gray-300">
+    <div className="flex flex-col bg-gray-100 rounded-lg shadow-lg">
+      <div className="flex justify-between items-center p-5 border-b border-gray-300">
         <BarSearchbar
           sendSearchText={(searchText) => {
             setSearchText(searchText);
@@ -49,7 +49,7 @@ function BarContainer() {
         />
         <PourButton />
       </div>
-      <div className="grid p-6 border-b border-gray-300">
+      <div className="grid p-5 border-b border-gray-300">
         <BarMenu menuOption={menuOption} setMenuOption={handleMenu} />
 
         <BarContent currentItems={currentItems} />

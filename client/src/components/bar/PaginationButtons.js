@@ -8,10 +8,10 @@ function PaginationButtons({ currentPage, totalPages, onPageChange }) {
   };
 
   return (
-    <div className="w-[400px] mx-auto mt-4 col-start-2">
+    <div className="w-[400px] mx-auto mt-3 col-start-2">
       <button
         onClick={handlePrevPage}
-        className="mx-2 px-4 py-2 rounded-md bg-blue-500 text-white"
+        className="mx-2 px-2 py-1 rounded-md bg-blue-500 text-white"
       >
         Prev
       </button>
@@ -19,7 +19,7 @@ function PaginationButtons({ currentPage, totalPages, onPageChange }) {
         <button
           key={page}
           onClick={() => onPageChange(page)}
-          className={`mx-2 px-4 py-2 rounded-md ${
+          className={`mx-2 px-2 py-1 rounded-md ${
             page === currentPage ? "bg-blue-500 text-white" : ""
           }`}
         >
@@ -28,7 +28,7 @@ function PaginationButtons({ currentPage, totalPages, onPageChange }) {
       ))}
       <button
         onClick={handleNextPage}
-        className="mx-2 px-4 py-2 rounded-md bg-blue-500 text-white"
+        className="mx-2 px-2 py-1 rounded-md bg-blue-500 text-white"
       >
         Next
       </button>

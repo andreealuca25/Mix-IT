@@ -11,6 +11,8 @@ function PourButton() {
     currentCapacity,
     setCurrentCapacity,
   } = useContext(DrinkContext);
+  // TODO: change cupContent from array to obj.
+  // move
   const handlePourButtonClick = () => {
     if (selectedDrink) {
       if (currentCapacity - quantity >= 0) {

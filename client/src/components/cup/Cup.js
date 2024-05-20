@@ -4,6 +4,7 @@ import ContentCalculator from "./ContentCalculator";
 import DrinkContext from "../../contexts/DrinkContext";
 import DrinkGlass from "./DrinkGlass";
 import { blendHexColors } from "../../utils/colorConverter";
+import SaveDrinkButton from "./SaveDrinkButton";
 
 function Cup() {
   const { currentCapacity } = useContext(DrinkContext);
@@ -45,18 +46,21 @@ function Cup() {
           ))}
         </div>
       ) : (
-        <ContentCalculator
-          cupContent={cupContent}
-          setCalculationResult={setCalculationResult}
-        />
-      )}
-      <DrinkGlass
-        fillLevel={fillLevel}
-        fillColor={fillColor}
-        glassCapacity={500}
-      />
+        <>
+          <DrinkGlass
+            fillLevel={fillLevel}
+            fillColor={fillColor}
+            glassCapacity={500}
+          />
 
-      <CupInfo currentCapacity={currentCapacity} cupContent={cupContent} />
+          <CupInfo currentCapacity={currentCapacity} cupContent={cupContent} />
+          <ContentCalculator
+            cupContent={cupContent}
+            setCalculationResult={setCalculationResult}
+          />
+          <SaveDrinkButton />
+        </>
+      )}
     </div>
   );
 }

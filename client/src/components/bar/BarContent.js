@@ -14,7 +14,7 @@ const BarContent = ({ currentItems }) => {
   };
   return (
     <div>
-      <div className="grid w-[54em] h-[26em] grid-rows-2 grid-cols-5 gird-rows-2 gap-4">
+      <div className="grid w-[38rem] h-[17rem] grid-rows-2 grid-cols-5 gird-rows-2 gap-4">
         {currentItems.map((currentItem, index) => (
           <div
             key={index}
@@ -28,7 +28,7 @@ const BarContent = ({ currentItems }) => {
             <img
               src={`/images/bottles/${currentItem.name}.png`}
               alt="Not available"
-              className="w-36 h-36"
+              className="w-26 h-26"
             />
             <p className={"text-center"}>{currentItem.name}</p>
           </div>

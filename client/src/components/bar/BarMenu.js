@@ -1,8 +1,7 @@
 function BarMenu({ menuOption, setMenuOption }) {
   const barMenuItems = ["Alcoholic", "Non Alcoholic", "Other"];
   return (
-    <div className="row-span-1 bg-gray-100 w-48 rounded-lg p-4">
-      <h1 className="text-lg font-semibold mb-2">Menu</h1>
+    <div className="row-span-1 bg-gray-100 w-40 rounded-lg">
       {barMenuItems.map((item, index) => (
         <button
           key={index}
