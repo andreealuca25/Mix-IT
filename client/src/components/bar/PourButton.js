@@ -6,36 +6,47 @@ function PourButton() {
   const QUANTITY_VALUES = [50, 100, 150, 200, 250];
   const {
     selectedDrink,
+    setSelectedDrink,
     cupContent,
     setCupContent,
     currentCapacity,
     setCurrentCapacity,
   } = useContext(DrinkContext);
-  // TODO: change cupContent from array to obj.
-  // move
   const handlePourButtonClick = () => {
     if (selectedDrink) {
+      if (quantity !== 50) {
+        setSelectedDrink({
+          ...selectedDrink,
+          quantity: quantity,
+        });
+      }
+
       if (currentCapacity - quantity >= 0) {
         setCurrentCapacity(currentCapacity - quantity);
-        const existingDrinkIndex = cupContent.findIndex(
-          //check if the drink has already been poured
-          (item) => item.name === selectedDrink.name
-        );
-        if (existingDrinkIndex !== -1) {
-          const updatedCupContent = [...cupContent];
-          updatedCupContent[existingDrinkIndex] = {
-            ...updatedCupContent[existingDrinkIndex],
-            quantity: updatedCupContent[existingDrinkIndex].quantity + quantity,
-          };
-          setCupContent(updatedCupContent);
-        } else {
-          setCupContent([
+        const drinkName = selectedDrink.name;
+        const existingDrinkQuantity = cupContent[drinkName]
+          ? cupContent[drinkName].quantity
+          : 0;
+
+        if (existingDrinkQuantity > 0) {
+          setCupContent({
             ...cupContent,
-            { ...selectedDrink, quantity: quantity },
-          ]);
+            [drinkName]: {
+              color: selectedDrink.color,
+              quantity: existingDrinkQuantity + quantity,
+            },
+          });
+        } else {
+          setCupContent({
+            ...cupContent,
+            [drinkName]: {
+              color: selectedDrink.color,
+              quantity: quantity,
+            },
+          });
         }
       } else {
-        alert("No space available or not selected"); //TODO: add error handling
+        alert("No space available or not selected"); // TODO: add error handling
       }
     }
   };

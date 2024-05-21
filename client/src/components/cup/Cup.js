@@ -14,13 +14,13 @@ function Cup() {
   const [fillLevel, setFillLevel] = useState(0);
 
   useEffect(() => {
-    if (cupContent.length === 1) {
-      setFillColor(cupContent[0].color);
-      setFillLevel(cupContent[0].quantity);
-    } else if (cupContent.length !== 0) {
+    if (Object.keys(cupContent).length == 1) {
+      const singleDrink = Object.values(cupContent)[0];
+      setFillColor(singleDrink.color);
+      setFillLevel(singleDrink.quantity);
+    } else if (Object.keys(cupContent).length > 1) {
       setFillColor(blendHexColors(fillColor, selectedDrink.color));
       setFillLevel(fillLevel + selectedDrink.quantity);
-      console.log(fillLevel, selectedDrink.quantity);
     }
   }, [cupContent]);
   return (

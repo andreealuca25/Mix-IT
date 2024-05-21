@@ -4,7 +4,7 @@ const SaveDrinkButton = () => {
   const { cupContent } = useContext(DrinkContext);
 
   const handleClick = () => {
-    if (cupContent.length > 0) {
+    if (Object.keys(cupContent).length > 0) {
       const savedDrinks = localStorage.getItem("savedDrinks");
       const drinksArray = JSON.parse(savedDrinks);
       if (savedDrinks == null) {

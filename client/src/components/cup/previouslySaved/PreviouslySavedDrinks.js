@@ -4,53 +4,66 @@ import { blendHexColors } from "../../../utils/colorConverter";
 
 function PreviouslySavedDrinks() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [savedDrinks, setSavedDrinks] = useState([]);
+  const [savedDrinks, setSavedDrinks] = useState({});
+
   useEffect(() => {
-    if (localStorage.getItem("savedDrinks") !== null) {
-      setSavedDrinks(JSON.parse(localStorage.getItem("savedDrinks")));
+    const savedDrinksFromStorage = localStorage.getItem("savedDrinks");
+    if (savedDrinksFromStorage !== null) {
+      setSavedDrinks(JSON.parse(savedDrinksFromStorage));
     }
   }, []);
+
+  const drinkKeys = Object.keys(savedDrinks);
+  const currentDrinkKey = drinkKeys[currentIndex];
+
   const goToPrevious = () => {
     const isFirstDrink = currentIndex === 0;
-    const newIndex = isFirstDrink ? savedDrinks.length - 1 : currentIndex - 1;
+    const newIndex = isFirstDrink ? drinkKeys.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
   };
 
   const goToNext = () => {
-    const isLastDrink = currentIndex === savedDrinks.length - 1;
+    const isLastDrink = currentIndex === drinkKeys.length - 1;
     const newIndex = isLastDrink ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
   };
 
   const blendCurrentDrink = () => {
-    const currentDrink = savedDrinks[currentIndex];
-    if (currentDrink.length === 0) return "#fffff";
+    const currentDrink = savedDrinks[currentDrinkKey];
+    if (!currentDrink || Object.keys(currentDrink).length === 0)
+      return "#ffffff";
 
-    let currentColor = currentDrink[0].color;
-    for (let i = 1; i < currentDrink.length; i++) {
-      currentColor = blendHexColors(currentColor, currentDrink[i].color);
-    }
+    let currentColor = Object.values(currentDrink)[0].color;
+
+    Object.values(currentDrink).forEach((drink, index) => {
+      if (index > 0) {
+        currentColor = blendHexColors(currentColor, drink.color);
+      }
+    });
+
     return currentColor;
   };
 
   const calculateFillLevel = () => {
-    const currentDrink = savedDrinks[currentIndex];
-    if (currentDrink.length === 0) return 0;
+    const currentDrink = savedDrinks[currentDrinkKey];
+    if (!currentDrink || Object.keys(currentDrink).length === 0) return 0;
 
-    let currentCapacity = currentDrink[0].quantity;
-    for (let i = 1; i < currentDrink.length; i++) {
-      currentCapacity += currentDrink[i].quantity;
-    }
+    let currentCapacity = 0;
+
+    Object.values(currentDrink).forEach((drink) => {
+      currentCapacity += drink.quantity;
+    });
+
     return currentCapacity;
   };
-  console.log("currentDrink: " + currentIndex);
-  return savedDrinks.length > 0 ? (
+
+  return drinkKeys.length > 0 ? (
     <div className="flex flex-row">
       <button onClick={goToPrevious}>Previous</button>
       <DrinkGlass
         fillLevel={calculateFillLevel()}
         fillColor={
-          savedDrinks[currentIndex] != null ? blendCurrentDrink() : "#fffff"
+          savedDrinks[currentDrinkKey] != null ? blendCurrentDrink() : "#ffffff"
         }
         glassCapacity={500}
       />

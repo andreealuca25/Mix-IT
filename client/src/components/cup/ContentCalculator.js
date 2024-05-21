@@ -1,7 +1,9 @@
 function ContentCalculator(props) {
   const { cupContent, setCalculationResult } = props;
   const calculateDrink = async () => {
-    const ingredientsNames = cupContent.map((ingredient) => ingredient.name);
+    const ingredientsNames = Object.values(cupContent).map(
+      (ingredient) => ingredient.name
+    );
 
     try {
       const response = await fetch(

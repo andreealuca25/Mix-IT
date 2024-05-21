@@ -3,8 +3,8 @@ import { createContext, useState } from "react";
 const DrinkContext = createContext({});
 
 export const DrinkProvider = ({ children }) => {
-  const [selectedDrink, setSelectedDrink] = useState();
-  const [cupContent, setCupContent] = useState([]);
+  const [selectedDrink, setSelectedDrink] = useState({});
+  const [cupContent, setCupContent] = useState({});
   const [currentCapacity, setCurrentCapacity] = useState(500);
   const [fillCup, setFillCup] = useState({ fillLevel: 0, fillColor: "" });
 
