@@ -6,7 +6,6 @@ export const DrinkProvider = ({ children }) => {
   const [selectedDrink, setSelectedDrink] = useState({});
   const [cupContent, setCupContent] = useState({});
   const [currentCapacity, setCurrentCapacity] = useState(500);
-  const [fillCup, setFillCup] = useState({ fillLevel: 0, fillColor: "" });
 
   const contextValue = {
     selectedDrink,

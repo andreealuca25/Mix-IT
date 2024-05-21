@@ -3,6 +3,7 @@ const DrinkGlass = ({
   fillLevel = 0,
   fillColor = "blue",
   glassCapacity = 450,
+  currentCapacity,
 }) => {
   const glassHeight = 100;
   const fillHeight = (glassHeight * fillLevel) / glassCapacity;
@@ -25,9 +26,12 @@ const DrinkGlass = ({
   };
 
   return (
-    <div style={styles.glass}>
-      <div style={styles.drink}></div>
-    </div>
+    <>
+      <div style={styles.glass}>
+        <div style={styles.drink}></div>
+      </div>
+      <h2>Capacity: {currentCapacity}</h2>
+    </>
   );
 };
 

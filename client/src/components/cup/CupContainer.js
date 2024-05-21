@@ -1,5 +1,5 @@
 import Cup from "./Cup";
-import SelectedBottles from "./SelectedBottles";
+import SelectedBottles from "../bottles/SelectedBottles";
 
 function CupContainer() {
   return (

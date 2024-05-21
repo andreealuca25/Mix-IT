@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import CupInfo from "./CupInfo";
 import ContentCalculator from "./ContentCalculator";
 import DrinkContext from "../../contexts/DrinkContext";
 import DrinkGlass from "./DrinkGlass";
@@ -51,9 +50,8 @@ function Cup() {
             fillLevel={fillLevel}
             fillColor={fillColor}
             glassCapacity={500}
+            currentCapacity={currentCapacity}
           />
-
-          <CupInfo currentCapacity={currentCapacity} cupContent={cupContent} />
           <ContentCalculator
             cupContent={cupContent}
             setCalculationResult={setCalculationResult}
