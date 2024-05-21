@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import DrinkGlass from "../DrinkGlass";
-import { blendHexColors } from "../../../utils/colorConverter";
+import DrinkGlass from "../cup/DrinkGlass";
+import { blendHexColors } from "../../utils/colorConverter";
 
 function PreviouslySavedDrinks() {
   const [currentIndex, setCurrentIndex] = useState(0);

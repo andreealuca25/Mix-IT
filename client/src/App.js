@@ -3,7 +3,7 @@ import BarContainer from "./components/bar/BarContainer";
 import CupContainer from "./components/cup/CupContainer";
 import "./index.css";
 import { DrinkProvider } from "./contexts/DrinkContext";
-import PreviouslySavedContainer from "./components/cup/previouslySaved/PreviouslySavedContainer";
+import PreviouslySavedContainer from "./components/previouslySaved/PreviouslySavedContainer";
 
 function App() {
   return (
