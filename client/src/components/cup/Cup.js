@@ -7,7 +7,7 @@ import SaveDrinkButton from "./SaveDrinkButton";
 
 function Cup() {
   const { currentCapacity } = useContext(DrinkContext);
-  const { cupContent, selectedDrink } = useContext(DrinkContext);
+  const { cupContent } = useContext(DrinkContext);
   const [calculationResult, setCalculationResult] = useState([]);
   const [fillColor, setFillColor] = useState("");
   const [fillLevel, setFillLevel] = useState(0);
@@ -18,8 +18,21 @@ function Cup() {
       setFillColor(singleDrink.color);
       setFillLevel(singleDrink.quantity);
     } else if (Object.keys(cupContent).length > 1) {
-      setFillColor(blendHexColors(fillColor, selectedDrink.color));
-      setFillLevel(fillLevel + selectedDrink.quantity);
+      const updatedColor = Object.keys(cupContent).reduce((acc, key, index) => {
+        if (index === 0) return cupContent[key].color;
+        return blendHexColors(acc, cupContent[key].color);
+      }, "#FFFFFF");
+
+      const updatedLevel = Object.keys(cupContent).reduce(
+        (total, key) => total + cupContent[key].quantity,
+        0
+      );
+
+      setFillColor(updatedColor);
+      setFillLevel(updatedLevel);
+    } else {
+      setFillColor("#FFFFFF");
+      setFillLevel(0);
     }
   }, [cupContent]);
   return (
