@@ -2,8 +2,7 @@ import PreviouslySavedDrinks from "./PreviouslySavedDrinks";
 
 function PreviouslySavedContainer() {
   return (
-    <div className="m-2">
-      <h1>Previously Saved Drinks</h1>
+    <div className="m-2 p-4 bg-brown-100 rounded-md">
       <PreviouslySavedDrinks />
     </div>
   );

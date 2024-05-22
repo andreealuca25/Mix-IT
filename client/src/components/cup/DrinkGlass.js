@@ -1,9 +1,9 @@
-//TODO: add more custom glasses with different shapes and capacities
 const DrinkGlass = ({
   fillLevel = 0,
   fillColor = "blue",
-  glassCapacity = 450,
+  glassCapacity = 500,
   currentCapacity,
+  showCapacity = false,
 }) => {
   const glassHeight = 100;
   const fillHeight = (glassHeight * fillLevel) / glassCapacity;
@@ -14,7 +14,9 @@ const DrinkGlass = ({
       height: `${glassHeight}px`,
       border: "2px solid black",
       position: "relative",
-      margin: "20px",
+      marginTop: "5px",
+      marginLeft: "20px",
+      marginRight: "20px",
     },
     drink: {
       width: "100%",
@@ -27,10 +29,10 @@ const DrinkGlass = ({
 
   return (
     <>
+      {showCapacity && <h2 className="text-xs">Capacity: {currentCapacity}</h2>}
       <div style={styles.glass}>
         <div style={styles.drink}></div>
       </div>
-      <h2>Capacity: {currentCapacity}</h2>
     </>
   );
 };

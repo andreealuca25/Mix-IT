@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import DrinkContext from "../../contexts/DrinkContext";
+
 const SaveDrinkButton = () => {
   const { cupContent } = useContext(DrinkContext);
 
@@ -25,10 +26,10 @@ const SaveDrinkButton = () => {
 
   return (
     <button
-      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      className="text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline text-xs"
       onClick={handleClick}
     >
-      Save drink
+      Save Drink
     </button>
   );
 };

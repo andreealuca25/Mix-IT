@@ -3,7 +3,6 @@ import DrinkContext from "../../contexts/DrinkContext";
 
 const BarContent = ({ currentItems }) => {
   const { selectedDrink, setSelectedDrink } = useContext(DrinkContext);
-  console.log("Bar content rendered");
 
   const handleImageClick = (drink) => {
     setSelectedDrink(
@@ -12,15 +11,16 @@ const BarContent = ({ currentItems }) => {
         : { name: drink.name, color: drink.color, quantity: 50 }
     );
   };
+
   return (
     <div>
-      <div className="grid w-[38rem] h-[17rem] grid-rows-2 grid-cols-5 gird-rows-2 gap-4">
+      <div className="grid w-[38rem] h-[17rem] grid-rows-2 grid-cols-5 gap-4 text-xs">
         {currentItems.map((currentItem, index) => (
           <div
             key={index}
-            className={`bg-gray-200 rounded-md flex flex-col items-center justify-center cursor-pointer ${
+            className={`bg-white rounded-md flex flex-col items-center justify-center cursor-pointer ${
               currentItem.name === selectedDrink?.name
-                ? "border-2 border-blue-500"
+                ? "border-2 border-amber-500"
                 : ""
             }`}
             onClick={() => handleImageClick(currentItem)}
@@ -30,7 +30,7 @@ const BarContent = ({ currentItems }) => {
               alt="Not available"
               className="w-26 h-26"
             />
-            <p className={"text-center"}>{currentItem.name}</p>
+            <p className="text-center text-amber-900">{currentItem.name}</p>
           </div>
         ))}
       </div>

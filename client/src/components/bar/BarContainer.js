@@ -15,6 +15,7 @@ const barData = {
   "Non Alcoholic": nonAlcoholicBeverages,
   Other: otherBeverages,
 };
+
 function BarContainer() {
   const [menuOption, setMenuOption] = useState("Alcoholic");
   const [searchText, setSearchText] = useState("");
@@ -34,14 +35,15 @@ function BarContainer() {
 
   const totalPages = Math.ceil(filteredBarData.length / ITEMS_PER_PAGE);
   let currentItems = filteredBarData.slice(startIndex, endIndex);
+
   function handleMenu(item) {
     setMenuOption(item);
     setCurrentPage(1);
   }
-  console.log("Test");
+
   return (
-    <div className="flex flex-col bg-gray-100 rounded-lg shadow-lg">
-      <div className="flex justify-between items-center p-5 border-b border-gray-300">
+    <div className="flex flex-col bg-amber-900 rounded-lg shadow-lg text-xs">
+      <div className="flex justify-between items-center p-5 border-b border-amber-300">
         <BarSearchbar
           sendSearchText={(searchText) => {
             setSearchText(searchText);
@@ -49,11 +51,9 @@ function BarContainer() {
         />
         <PourButton />
       </div>
-      <div className="grid p-5 border-b border-gray-300">
+      <div className="grid p-5 border-b border-amber-300">
         <BarMenu menuOption={menuOption} setMenuOption={handleMenu} />
-
         <BarContent currentItems={currentItems} />
-
         <PaginationButtons
           currentPage={currentPage}
           totalPages={totalPages}

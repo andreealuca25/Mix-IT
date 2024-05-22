@@ -57,21 +57,35 @@ function PreviouslySavedDrinks() {
     return currentCapacity;
   };
 
-  return drinkKeys.length > 0 ? (
-    <div className="flex flex-row">
-      <button onClick={goToPrevious}>Previous</button>
-      <DrinkGlass
-        fillLevel={calculateFillLevel()}
-        fillColor={
-          savedDrinks[currentDrinkKey] != null ? blendCurrentDrink() : "#ffffff"
-        }
-        glassCapacity={500}
-      />
-      <button onClick={goToNext}>Next</button>
-      <p>{currentIndex}</p>
-    </div>
-  ) : (
-    <div>There are no results available.</div>
+  return (
+    drinkKeys.length > 0 && (
+      <div className="p-4 rounded-md shadow-md">
+        <h3 className="text-brown-900 text-m">Previously Saved Drinks</h3>
+        <div className="flex flex-row items-center justify-between">
+          <button
+            onClick={goToPrevious}
+            className="bg-amber-950 text-white text-xs p-1 rounded-full hover:bg-amber-700 transition shadow-lg w-24"
+          >
+            Previous
+          </button>
+          <DrinkGlass
+            fillLevel={calculateFillLevel()}
+            fillColor={
+              savedDrinks[currentDrinkKey] != null
+                ? blendCurrentDrink()
+                : "#ffffff"
+            }
+            glassCapacity={500}
+          />
+          <button
+            onClick={goToNext}
+            className="bg-amber-950 text-white text-xs p-1 rounded-full hover:bg-amber-700 transition shadow-lg w-24"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    )
   );
 }
 

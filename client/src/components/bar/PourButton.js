@@ -12,6 +12,7 @@ function PourButton() {
     currentCapacity,
     setCurrentCapacity,
   } = useContext(DrinkContext);
+
   const handlePourButtonClick = () => {
     if (selectedDrink) {
       if (quantity !== 50) {
@@ -50,12 +51,20 @@ function PourButton() {
       }
     }
   };
+
   return (
-    <div>
-      <button className="btn btn-primary" onClick={handlePourButtonClick}>
+    <div className="flex items-center space-x-3 text-xs">
+      <button
+        className="px-4 py-2 rounded-md bg-amber-700 text-white hover:bg-amber-700 transition"
+        onClick={handlePourButtonClick}
+      >
         Pour
       </button>
-      <select value={quantity} onChange={(e) => setQuantity(+e.target.value)}>
+      <select
+        value={quantity}
+        onChange={(e) => setQuantity(+e.target.value)}
+        className="px-2 py-1 rounded-md bg-amber-200 text-amber-900"
+      >
         {QUANTITY_VALUES.map((value) => (
           <option key={value} value={value}>
             {value}ml
